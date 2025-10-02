@@ -4,7 +4,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class CustomerserviceApplicationTests {
-
+ @Autowired
+    private CustomerService customerService;
 
    @DeleteMapping(CUSTOMER_ID)
     private ResponseEntity<CustomerOperationResponse> deleteCustomer(@PathVariable("id") String id) throws CustomerNotFoundException {
