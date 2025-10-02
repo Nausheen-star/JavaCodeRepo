@@ -6,6 +6,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 class CustomerserviceApplicationTests {
 
 
+   @DeleteMapping(CUSTOMER_ID)
+    private ResponseEntity<CustomerOperationResponse> deleteCustomer(@PathVariable("id") String id) throws CustomerNotFoundException {
+        customerService.deleteCustomer(Integer.parseInt(id));
+        CustomerOperationResponse CustomerDetails = BuilderUtil.responseBuilder("", CUSTOMER_DETAILS_DELETED_SUCCESSFULLY);
+        return new ResponseEntity<>(CustomerDetails, HttpStatus.OK);
+
+    }
 
 
 
