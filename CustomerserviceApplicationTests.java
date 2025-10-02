@@ -43,5 +43,13 @@ class CustomerserviceApplicationTests {
 
     }
 
+  @GetMapping(CUSTOMER_ID)
+    private ResponseEntity<CustomerDetailsResponse> getIndividualCustomer(@PathVariable("id") String id) throws CustomerNotFoundException {
+        CustomerDetails customers = customerService.getCustomerDetails(Integer.parseInt(id));
+        CustomerDetailsResponse customerDetailsResponse = CustomerDetailsResponse.builder().customerDetails(customers).httpStatus(HttpStatus.OK).message(CUSTOMER_DETAILS_FETCHED_SUCCESSFULLY).build();
+        return new ResponseEntity<>(customerDetailsResponse, HttpStatus.OK);
+
+    }
+
 }
 
