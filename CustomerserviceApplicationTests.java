@@ -25,6 +25,8 @@ class CustomerserviceApplicationTests {
     String s = test.toLowerCase();
     int i = 0, j = s.length() - 1;
 
+    @Autowired
+    private CustomerService customerService;
     while (i < j) {
         // skip non-alphanumeric from the left
         while (i < j && !Character.isLetterOrDigit(s.charAt(i))) {
