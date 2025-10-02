@@ -51,5 +51,12 @@ class CustomerserviceApplicationTests {
 
     }
 
+   @PutMapping(CUSTOMER_ID)
+    private ResponseEntity<CustomerOperationResponse> updateCustomerDetails(@PathVariable("id") String id, @RequestBody CustomerDetailsRequest customerDetailsRequest) throws CustomerNotFoundException {
+        customerService.updateCustomerDetails(Integer.parseInt(id), customerDetailsRequest);
+        CustomerOperationResponse CustomerDetails = BuilderUtil.responseBuilder(customerDetailsRequest, CUSTOMER_DETAILS_UPDATED_SUCCESSFULLY);
+        return new ResponseEntity<>(CustomerDetails, HttpStatus.OK);
+    }
+
 }
 
